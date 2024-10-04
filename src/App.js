@@ -6,6 +6,7 @@ import Carousel1 from './component/Carousel';
 import ProductList from './component/ProductList';
 import ProductModal from './component/ProductModal';
 import { useState } from 'react';
+import Booking from './component/Booking';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -48,12 +49,15 @@ const App = () => {
       <Row>
         <ProductList handleAddToCart={handleAddToCart} />
       </Row>
-      <ProductModal 
-      show={showModal} 
-      handleClose={handleClose} 
-      selectedProducts={cart} 
-      handleShow={handleShow}
-      updateQuantity={updateQuantity}/> 
+      <ProductModal
+        show={showModal}
+        handleClose={handleClose}
+        selectedProducts={cart}
+        handleShow={handleShow}
+        updateQuantity={updateQuantity} />
+      <Row>
+        <Booking></Booking>
+      </Row>
     </Container>
   );
 };

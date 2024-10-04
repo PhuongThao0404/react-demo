@@ -6,10 +6,10 @@ import image4 from '../images/menu4.jpg';
 
 const ProductList = ({ handleAddToCart }) => {
   const products = [
-    { id: 1, name: 'Margherita Pizza', price: 40.25, image: image1 },
+    { id: 1, name: 'Margherita Pizza', price: 40.25, salePrice: 20.25, image: image1 },
     { id: 2, name: 'Mushroom Pizza', price: 40.00, image: image2 },
     { id: 3, name: 'Hawaiian Pizza', price: 30.00, image: image3 },
-    { id: 4, name: 'Pesto Pizza', price: 30.25, image: image4 },
+    { id: 4, name: 'Pesto Pizza', price: 30.25, salePrice: 15.25, image: image4 },
   ];
 
   return (
@@ -19,15 +19,26 @@ const ProductList = ({ handleAddToCart }) => {
           <Card>
             <Card.Img variant="top" src={product.image} />
             <Card.Body>
-              <Card.Title>{product.name}</Card.Title>
-              <Card.Text>${product.price.toFixed(2)}</Card.Text>
+              <Card.Title className="product-title">{product.name}</Card.Title>
+              {product.salePrice ? (
+                <>
+                  <Card.Text>
+                    <del>${product.price.toFixed(2)}</del>
+                    <span className='price'>
+                      ${product.salePrice.toFixed(2)}
+                    </span>
+                  </Card.Text>
+                </>
+              ) : (
+                <Card.Text>${product.price.toFixed(2)}</Card.Text>
+              )}
               <Button variant="primary" onClick={() => handleAddToCart(product)}>Buy</Button>
             </Card.Body>
           </Card>
         </Col>
       ))}
     </Row>
-);
+  );
 };
 
 export default ProductList;

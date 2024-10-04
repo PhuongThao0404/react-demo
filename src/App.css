@@ -38,13 +38,13 @@
 }
 
 body {
-  background-color: black; 
+  background-color: #333333;
   color: white; 
   margin: 0; 
   font-family: Arial, sans-serif; 
 }
 .navbar-custom {
-  background-color: black; 
+  background-color: #333333 !important;
 }
 
 .navbar-brand, .nav-link {
@@ -88,11 +88,11 @@ body {
 }
 .carousel {
   width: 100%;
-  margin-bottom: 50px
+  margin-bottom: 10px
 }
 .menu {
   width: 100%;
-  margin-top: 50px
+  margin-top: 20px
 }
 .item {
   margin-left: 15px; 
@@ -123,6 +123,18 @@ body {
   align-items: center;    
   margin-bottom: 0,5rem;    
 }
+.product-title {
+  font-family: 'Arial', sans-serif; 
+  font-size: 1.3rem; 
+  font-weight: bold; 
+  color: #333; 
+  text-align: center; 
+  margin-bottom: 10px; 
+}
+.price {
+  color: red;
+   margin-Left: 10px;
+}
 
 .quantity-controls {
   display: flex;          
@@ -130,5 +142,25 @@ body {
 }
 
 .quantity {
-  margin: 0 1rem;       
+  margin: 0 1rem;      
+} 
+ .all {
+  padding: 20px;
+  background-color: #333; 
+  color: #fff; 
+}
+
+.book {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: #fff;
+}
+.sendmess{
+  margin-top: 30px;
+  background-color: #07a7f2ec;
+  color: #fff;
+  width: 170px;
+  border-radius: 20px;
+  height: 40px;
 }

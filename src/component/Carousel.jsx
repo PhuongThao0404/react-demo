@@ -34,7 +34,6 @@ const Carousel1 = () => {
     </Carousel>
     <h2 class = 'name-menu'>Menu</h2>
     </div>
-    {/* </div> */}
         </>
     )
 }
