@@ -11,7 +11,7 @@ import Booking from './component/Booking';
 const App = () => {
   const [cart, setCart] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
+ 
   const handleAddToCart = (product) => {
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
@@ -44,6 +44,8 @@ const App = () => {
     <Container>
       <Header handleAddToCart={handleAddToCart} cartItems={cart.length} handleShow={handleShow} />
       <Row>
+      </Row>
+      <Row>
         <Carousel1></Carousel1>
       </Row>
       <Row>
@@ -58,6 +60,7 @@ const App = () => {
       <Row>
         <Booking></Booking>
       </Row>
+     
     </Container>
   );
 };

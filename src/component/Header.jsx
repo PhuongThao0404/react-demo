@@ -1,8 +1,18 @@
+import React, { useState } from "react";
 
 import { Navbar, Nav, Container, Form, Button, Badge } from 'react-bootstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import LoginModal from "./LoginModal";
+// import { toast, ToastContainer } from 'react-toastify';
 import ProductModal from './ProductModal';
 
-const Header = ({ handleAddToCart, cartItems, handleShow }) => {
+const Header = ({cartItems, handleShow }) => {
+  const [showLogin, setShowLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false); // Trạng thái đăng nhập
+
+  const handleLoginShow = () => setShowLogin(true);
+  const handleLoginClose = () => setShowLogin(false);
   return (
     <>
       <Navbar expand="lg" className="navbar-custom">
@@ -32,9 +42,20 @@ const Header = ({ handleAddToCart, cartItems, handleShow }) => {
                 <span className="visually-hidden">unread messages</span>
               </Button>
             </Form>
+            {loggedIn ? (
+                <Button className="ms-2" variant="outline-primary" >
+                  Profile
+                </Button>
+              ) : (
+                <Button className="ms-2" variant="outline-primary" onClick={handleLoginShow}>
+                  <FontAwesomeIcon icon={faUser} /> Login
+                </Button>
+              )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <LoginModal show={showLogin} handleClose={handleLoginClose} setLoggedIn={setLoggedIn} />
+
       <ProductModal></ProductModal>
     </>
   );

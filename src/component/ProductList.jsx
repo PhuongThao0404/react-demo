@@ -1,21 +1,39 @@
 import { Row, Col, Card, Button } from 'react-bootstrap';
-import image1 from '../images/menu1.jpg';
-import image2 from '../images/menu2.jpg';
-import image3 from '../images/menu3.jpg';
-import image4 from '../images/menu4.jpg';
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 const ProductList = ({ handleAddToCart }) => {
-  const products = [
-    { id: 1, name: 'Margherita Pizza', price: 40.25, salePrice: 20.25, image: image1 },
-    { id: 2, name: 'Mushroom Pizza', price: 40.00, image: image2 },
-    { id: 3, name: 'Hawaiian Pizza', price: 30.00, image: image3 },
-    { id: 4, name: 'Pesto Pizza', price: 30.25, salePrice: 15.25, image: image4 },
+  const data = [
+    { id: 1, name: 'Margherita Pizza', price: 40.25, salePrice: 20.25, image: "" },
+
   ];
+  const [products, setProducts] = useState(data);
+
+  const loadData = async () => {
+    const res = await fetch("https://api-demo-4gqb.onrender.com/products");
+    const data = await res.json();
+    console.log(data);
+    const transformedItems = data.data.map((item) => ({
+      id: item.id,
+      image: item.image,
+      name: item.title,
+      price: item.price,
+      salePrice: item.salePrice,
+    }));
+
+    setProducts(transformedItems);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+
 
   return (
     <Row>
-      {products.map((product) => (
-        <Col md={3} key={product.id}>
+      {products?.map((product) => (
+        <Col md={3} id={product.id}>
           <Card>
             <Card.Img variant="top" src={product.image} />
             <Card.Body>
