@@ -45,7 +45,7 @@ const LoginModal = ({ show, handleClose, setLoggedIn }) => {
 
       const data = await response.json();
       console.log("Login successful:", data);
-      toast.success("Dzô!");
+      toast.success("Login!");
       setLoggedIn(true);
       handleClose(); 
     } catch (err) {
